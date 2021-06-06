@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<title>регистрация</title>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+body{background:black;}
+.a1{text-align:center;font-size:50px;color:red;cursor: help;}
+.in1{width:30%;
+padding:18px 10px;
+margin-top:40px;
+border: 1px solid #FF0000;
+background:red;
+border-radius: 20px/20px;
+box-shadow: 2px 2px 5px rgba(255,0,0,0.82);
+color:yellow;
+font-size:20px;
+}
+input:hover{
+cursor:pointer;
+transform: scale(0.9);
+transition:0.75s;
+}
+
+input:focus{
+	border: 2px solid #FF0000;
+	transform: translate(15px);
+	
+}
+
+
+	
+.in2{width:15%;height:80px;color:#000;padding:18px 10px;margin-top:40px;border: 1px solid #000;background:yellow;cursor: pointer;border: none;}
+	.in2:hover{border: 1px solid #FF0000;transition:1s;opacity:0.8;font-weight:bold;transform: scale(0.9);border: none;font-size:18px;color:red;background:white;}
+	
+	.in22{width:15%;height:80px;color:#000;padding:18px 10px;margin-top:40px;border: 1px solid #000;background:yellow;cursor: pointer;border: none;display:none;}
+	.in22:hover{border: 1px solid #FF0000;transition:1s;opacity:0.8;font-weight:bold;transform: scale(0.9);border: none;font-size:18px;color:red;background:white;}
+	
+
+div{margin:0auto;justify-content:center;width:100%;text-align:center;}
+
+.dis{display:flex;}
+.div2{display:none;}
+.logon{color:blue;padding:18px 10px;margin-top:40px;cursor: pointer;}
+.regist{color:blue;padding:18px 10px;margin-top:40px;cursor: pointer;display:none;}
+
+.gg{font-size:40px; color:black; }
+.good{background:white;width:30%;margin:0 auto;height:150px;display:none;}
+
+</style>
+</head>
+<body>
+<div class="barev">
+<h1 class="a1" id ="ar12">Sign Up</h1>
+<div class="div1">
+<div>
+<input type="text" class="in1" id="id0" placeholder="Name" />
+</div>
+<div>
+<input type="text" class="in1" id="id1" placeholder="LastName" />
+</div>
+<div>
+<input type="text" class="in1" id="id2" placeholder="Gmail login" />
+</div>
+<div>
+<input type="password" class="in1" id="id3" placeholder="Pass" />
+</div>
+</div>
+<div class="div2">
+<div>
+<input type="text" class="in1" id="id4" placeholder="Gmail login" />
+</div>
+<div>
+<input type="password" class="in1" id="id5" placeholder="Pass" />
+</div>
+</div>
+
+<div class="dis">
+<button class="in2" id="button" >Sign Up </button>
+<button class="in22" id="buttonlogin" >Login </button>
+<p class="logon" id="loginid" > login? </p>
+<p class="regist" id="loginid2" > Registrachia? </p>
+</div>
+</div>
+
+<div class="good">
+<h1 class="gg" id ="go">
+
+</h1>
+</div>
+
+<!--
+<script>
+
+
+/*var persons = [
+  {firstname : "Arman", lastname: "Tonoyan"},
+  {firstname : "Armen", lastname: "Muradyan"},
+  {firstname : "Andranik", lastname: "Ozanyan"}
+];
+
+$("#button").click(function(){
+	var reg = [Name.] 
+	
+	
+	
+});
+*/
+
+
+$("#button").click(function(){
+ let name = $("#Name").val();
+ let lastname = $("#LastName").val();
+ let gmail = $("#Gmail").val();
+ let pass = $("#Pass").val();
+/*	if (name === "Arman"&& lastname === "Tonoyan" && gmail === "arman.tonoyan.y@tumo.org" && pass === "..."){
+		console.log(name)
+		console.log(lastname)
+		console.log(gmail)
+		console.log(pass)
+		
+	let a = ["name","lastname","gmail","pass"]
+		alert("hello")
+	}
+*/
+if (name == ""){
+alert ("Please write your name!")
+}
+
+else if (lastname == ""){
+alert ("Please write your lastname!")
+}
+
+else if (gmail == ""){
+alert ("Please write your gmail!")
+}
+
+else if (pass == ""){
+alert ("Please write your pass!")
+}
+/*else {
+	console.log(name+lastname+gmail+pass)
+}
+*/
+
+ let person=[
+	{name:"Arman"},
+	{lastname:"Arman"},
+	{gmail:"Arman"},
+	{pass:"Arman"},
+	]
+			 let names= person.map(function(val, i){
+				return val.name;
+			 })
+			 console.log(names)
+
+
+
+});
+
+
+</script>
+-->
+
+<script>
+
+
+$("#button").click(function(){
+
+let persons=[
+	{name:[]},
+	{LastName:[]},
+	{Gmail:[]},
+	{Pass:[]}
+				]
+				
+	let peros=[
+	{name:[]},
+	{LastName:[]},
+	{Gmail:[]},
+	{Pass:[]}
+				]
+
+	persons=persons.map(function(old, i){
+		
+		return Object.values(old)[0]=document.getElementById("id"+i).value
+			 })
+			console.log(persons)
+
+
+		let locition=JSON.stringify(persons)
+		
+		localStorage.setItem("textSave",locition);
+	
+
+		
+
+		});
+		$("#buttonlogin").click(function(){
+		
+		let jh =localStorage.getItem("textSave")
+		jh = JSON.parse(jh)
+		console.log(document.getElementById("id4").value)
+	
+		if (document.getElementById("id4").value ===jh[2] && document.getElementById("id5").value === jh[3] ){
+		$(".barev").css({
+		"display":"none"
+		});
+		$("body").css({
+		"background":"white"
+		});
+		$(".good").css({
+		"display":"block"
+		});
+		document.getElementById("go").innerHTML = "Barev " + jh[0] + " " + jh[1] + " Jan axper Jan" ;
+		}
+		else {
+		alert("your gmail or pass is wrong")
+		}
+		
+
+		});
+		
+		
+		
+		
+$("#loginid").click(function(){
+$(".div1").css({
+"display":"none"
+});
+$(".div2").css({
+"display":"block"
+});
+$(".logon").css({
+"display":"none"
+});
+$(".regist").css({
+"display":"block"
+});
+$(".in22").css({
+"display":"block"
+});
+$(".in2").css({
+"display":"none"
+});
+document.getElementById("ar12").innerHTML = "Login"
+})
+
+
+
+
+
+$("#loginid2").click(function(){
+$(".div1").css({
+"display":"block"
+});
+$(".div2").css({
+"display":"none"
+});
+$(".logon").css({
+"display":"block"
+});
+$(".regist").css({
+"display":"none"
+});
+$(".in22").css({
+"display":"none"
+});
+$(".in2").css({
+"display":"block"
+});
+document.getElementById("ar12").innerHTML = "Sign Up"
+})	
+
+
+		
+
+	
+</script>
+
+</body>
+</html>
